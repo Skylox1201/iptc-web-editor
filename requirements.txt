@@ -5,3 +5,5 @@ setuptools
 sqlparse
 tzdata
 wheel
+Pillow
+exif

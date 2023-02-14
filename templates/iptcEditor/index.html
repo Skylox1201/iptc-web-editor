@@ -1,0 +1,12 @@
+{% load static %}
+{% block content %}
+    <h1>Image List</h1>
+    {% if image_list %}
+        {% for image in image_list %}
+            <a href="{{ image.get_absolute_url }}">{{ image.title }}</a>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>There are no images in the library.</p>
+    {% endif %}
+{% endblock %}
