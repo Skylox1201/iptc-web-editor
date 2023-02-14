@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path('', views.ImageListView.as_view(), name='index'),
     path('update/<int:pk>', views.ImageUpdateView.as_view(), name='image_update'),
+    path('upload/', views.ImageCreateView.as_view(), name="image_upload")
 ]
