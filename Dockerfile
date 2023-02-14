@@ -1,15 +1,21 @@
-# Dockerfile
+# pull the official base image
+FROM python:3.10-alpine
 
-# The first instruction is what image we want to base our container on
-# We Use an official Python runtime as a parent image
-FROM django
+# set work directory
+WORKDIR /
 
-ADD . /iptc-web-editor
-WORKDIR /iptc-web-editor
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
+# install dependencies
+RUN pip install --upgrade pip
+COPY /requirements.txt /
 RUN pip install -r requirements.txt
-RUN pip install django-tinymce
 
-RUN ls -a
+# copy project
+COPY . /
 
-CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000", "--settings=iptc-web-editor.settings.prod" ]
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
