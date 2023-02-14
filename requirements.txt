@@ -6,4 +6,4 @@ sqlparse
 tzdata
 wheel
 Pillow
-exif
+pyexiv2
