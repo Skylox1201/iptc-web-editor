@@ -9,7 +9,6 @@ docker volume create user-data
 
 Commande à éxécuter pour lancer la production : 
 ```bash
-docker run -v user-data:/data -p 8088:80 $IMG_NAME
+docker run -v user-data:/data -d -p 8000:8000 --restart=always skylox/iptc_web_editor
 ```
-*Vous pouvez bien sur adapter cette documentation en changeant par exemple l'emplacement du point de montage `/data` à l'emplacement de votre choix ou le port d'écoute.*
-
+*Vous pouvez bien sur adapter cette documentation en changeant par exemple l'emplacement du point de montage `/data` à l'emplcameent de votre choix ou le port d'écoute.*
