@@ -16,7 +16,7 @@ jobs:
         name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: sKylox
+          username: skylox
           password: dckr_pat_y9bSxlrTpaYsAUiE3xLok7xVgnE
       -
         name: Set up Docker Buildx
