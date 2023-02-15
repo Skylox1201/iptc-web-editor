@@ -1,11 +1,22 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    container_name: iptc-web-editor
-    volumes:
-      - .:/iptc-web-editor
-    ports:
-      - "8000:8000"
+   nginx:
+     image: nginx:1.13-alpine
+     container_name: nginx01
+     ports:
+       - "8000:8000"
+     volumes:
+       - ./project/iptc-web-editor:/src
+       - ./config/nginx:/etc/nginx/conf.d
+     depends_on:
+       - web
+   web:
+     build: .
+     container_name: django01
+     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn iptc-web-editor.wsgi -b 0.0.0.0:8000"
+     volumes:
+       - ./project:/src
+     expose:
+       - "8000"
+     restart: always

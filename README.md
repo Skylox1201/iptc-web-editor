@@ -7,6 +7,12 @@ Page Web permettant d'éditer les métadonnées IPTC des images
 run the following command on your terminal
 
 ```bash
+docker-compose build
+```
+
+Then
+
+```bash
 docker-compose up
 ```
 
