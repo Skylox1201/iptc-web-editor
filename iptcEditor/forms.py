@@ -3,6 +3,7 @@ from iptcEditor import models
 import pyexiv2
 from django.conf import settings
 
+
 class ImageForm(forms.ModelForm):
     title = forms.CharField(
         required=True,

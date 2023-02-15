@@ -1,9 +1,6 @@
 asgiref
 Django
-pip
-setuptools
-sqlparse
-tzdata
 wheel
 Pillow
 pyexiv2
+gunicorn
