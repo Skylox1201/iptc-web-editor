@@ -33,7 +33,7 @@ class ImageUpdateView(SuccessMessageMixin, generic.UpdateView):
         # set the new ImageDescription Metadata from the image
         current_image_path = instance.image.file.name
         current_image = pyexiv2.Image(current_image_path)
-        current_image.modify_comment(new_description)
+        current_image.modify_iptc({'Iptc.Application2.ObjectName': new_description})
 
         response = {'msg': 'Submited Successfully',
                     'url': reverse('index'),

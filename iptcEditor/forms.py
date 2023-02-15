@@ -1,6 +1,7 @@
 from django import forms
 from iptcEditor import models
 import pyexiv2
+from django.conf import settings
 
 class ImageForm(forms.ModelForm):
     title = forms.CharField(
@@ -37,10 +38,10 @@ class ImageForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Get the ImageDescription Metadata from the image
-        current_image_path = self.instance.image.file.name
-        current_image = pyexiv2.Image(current_image_path)
-        # Set the textarea value to the current value
-        self.fields['description'].initial = current_image.read_comment()
+        current_image_path = settings.MEDIA_ROOT + self.instance.image.name
+        with pyexiv2.Image(current_image_path, encoding='utf-8') as img:
+            # Set the textarea value to the current value
+            self.fields['description'].initial = img.read_iptc().get('Iptc.Application2.ObjectName')
 
 
 class UploadImage(forms.ModelForm):

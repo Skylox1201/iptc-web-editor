@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container my-2">
         <img src="/media/{{ image.image }}" class="rounded mx-auto d-block mt-5" alt="{{ image.title }}" id="img"
-             style="max-width: 56rem">
+             style="max-width: 56rem; max-height: 600px">
         <form method="post">
         {% csrf_token %}
             {% for field in form %}
