@@ -13,7 +13,7 @@ services:
        - web
    web:
      build: .
-     container_name: django01
+     container_name: iptc-web-editor
      command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn iptc-web-editor.wsgi -b 0.0.0.0:8000"
      volumes:
        - ./project:/src
