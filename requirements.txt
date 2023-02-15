@@ -4,3 +4,4 @@ wheel
 Pillow
 pyexiv2
 gunicorn
+pip

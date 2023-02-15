@@ -1,6 +1,6 @@
 # Dockerfile
 
-FROM python:3.8-buster
+FROM python:3.8
 
 # install nginx
 RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
@@ -18,6 +18,7 @@ COPY .pip_cache /opt/app/pip_cache/
 COPY . /opt/app/iptc-web-editor/
 WORKDIR /opt/app
 RUN pip install -r requirements.txt --cache-dir /opt/app/pip_cache
+RUN pip install --no-cache-dir -r requirements.txt
 RUN chown -R www-data:www-data /opt/app
 
 # start server
